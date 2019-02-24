@@ -2,9 +2,15 @@ from SublimeLinter.lint import Linter  # or NodeLinter, PythonLinter, ComposerLi
 
 
 class __class__(Linter):
-    cmd = '__cmd__'
-    regex = r''
+    cmd = ('sabre')
+
+    regex = (
+        r'\s*(?P<line>\d+):(?P<col>\d+)\s*'
+        r'((?P<error>error)|(?P<warning>warning))\s*'
+        r'(?P<message>.+)'
+    )
+    tempfile_suffix = "~"
     multiline = False
     defaults = {
-        'selector': 'source.python'
+        'selector': 'source.solidity'
     }
